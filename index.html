@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星のおたより - 呼吸法レッスン</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+            background-color: #fefefe;
+            color: #444;
+            line-height: 1.8;
+        }
+
+        /* レイアウト */
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* メインコンテンツエリア */
+        .main-content {
+            flex: 1;
+            padding: 60px 80px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* 固定メニュー */
+        .side-menu {
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 200px;
+            height: 100vh;
+            background-color: #fefefe;
+            padding: 60px 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .menu-item {
+            cursor: pointer;
+            font-size: 15px;
+            color: #6b6b6b;
+            transition: color 0.3s ease;
+            text-align: center;
+            padding: 8px 0;
+            letter-spacing: 0.1em;
+        }
+
+        .menu-item:hover {
+            color: #b8926d;
+        }
+
+        .menu-item.active {
+            color: #b8926d;
+            font-weight: 600;
+        }
+
+        .instagram-icon {
+            text-align: center;
+        }
+
+        .instagram-icon a {
+            color: #6b6b6b;
+            transition: color 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .instagram-icon a:hover {
+            color: #b8926d;
+        }
+
+        .instagram-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* コンテンツセクション */
+        .content-section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* トップ画像 */
+        .top-image {
+            width: 100%;
+            height: 400px;
+            background-color: #f5f1ed;
+            margin-bottom: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .top-image::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150px;
+            height: 150px;
+            border: 2px solid #d4c4b0;
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+
+        .top-image-text {
+            font-size: 18px;
+            color: #9b8b7e;
+            letter-spacing: 0.2em;
+            z-index: 1;
+        }
+
+        /* 説明文エリア */
+        .description {
+            max-width: 650px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            color: #b8926d;
+            margin-bottom: 30px;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+        }
+
+        .section-text {
+            font-size: 16px;
+            line-height: 2;
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        .section-subtitle {
+            font-size: 20px;
+            color: #8b7b6d;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+        }
+
+        .lesson-list {
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        .lesson-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .lesson-list li::before {
+            content: '◯';
+            position: absolute;
+            left: 0;
+            color: #b8926d;
+        }
+
+        .contact-info {
+            background-color: #f9f6f4;
+            padding: 30px;
+            border-radius: 2px;
+            margin-top: 30px;
+        }
+
+        .contact-item {
+            margin-bottom: 20px;
+            font-size: 15px;
+            color: #555;
+        }
+
+        .contact-label {
+            font-weight: 600;
+            color: #8b7b6d;
+            margin-bottom: 8px;
+            letter-spacing: 0.1em;
+        }
+
+        /* レスポンシブ対応 */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .main-content {
+                padding: 40px 30px;
+                padding-bottom: 120px;
+            }
+
+            .side-menu {
+                position: fixed;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                width: 100%;
+                height: auto;
+                flex-direction: row;
+                justify-content: space-around;
+                padding: 20px;
+                border-left: none;
+                border-top: 1px solid #e8e3df;
+            }
+
+            .instagram-icon {
+                margin-top: 0;
+                padding-top: 0;
+                border-top: none;
+                border-left: 1px solid #e8e3df;
+                padding-left: 20px;
+            }
+
+            .instagram-icon svg {
+                width: 18px;
+                height: 18px;
+            }
+
+            .top-image {
+                height: 250px;
+            }
+
+            .section-title {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- メインコンテンツ -->
+        <main class="main-content">
+            <!-- ホーム -->
+            <section id="home" class="content-section active">
+                <div class="top-image">
+                    <span class="top-image-text">星のおたより</span>
+                </div>
+                <div class="description">
+                    <h1 class="section-title">呼吸とともに、心と身体を整える</h1>
+                    <p class="section-text">
+                        日々の暮らしの中で、私たちは呼吸をしています。<br>
+                        でも、その呼吸を意識したことはありますか？
+                    </p>
+                    <p class="section-text">
+                        呼吸法のレッスンでは、古来より伝わる呼吸と気功の智慧を通じて、<br>
+                        心身のバランスを取り戻すお手伝いをしています。
+                    </p>
+                    <p class="section-text">
+                        忙しい毎日の中で、ほんの少し立ち止まり、<br>
+                        自分自身と向き合う時間を持ってみませんか。
+                    </p>
+                    <p class="section-text">
+                        深い呼吸とともに、本来のあなたらしさを取り戻していきましょう。
+                    </p>
+                </div>
+            </section>
+
+            <!-- 呼吸・気功について -->
+            <section id="breathing" class="content-section">
+                <div class="top-image">
+                    <span class="top-image-text">呼吸・気功について</span>
+                </div>
+                <div class="description">
+                    <h2 class="section-title">呼吸が変われば、人生が変わる</h2>
+                    <p class="section-text">
+                        呼吸は、私たちの生命活動の根幹です。<br>
+                        一日に約2万回以上も繰り返される呼吸を、意識的に整えることで、<br>
+                        心と身体に驚くほどの変化が訪れます。
+                    </p>
+                    
+                    <h3 class="section-subtitle">呼吸法の効果</h3>
+                    <p class="section-text">
+                        正しい呼吸法を身につけることで、自律神経のバランスが整い、<br>
+                        ストレスの軽減、睡眠の質の向上、集中力の向上などの効果が期待できます。
+                    </p>
+                    
+                    <h3 class="section-subtitle">気功とは</h3>
+                    <p class="section-text">
+                        気功は、中国古来より伝わる心身を整える実践法です。<br>
+                        呼吸法と緩やかな動きを組み合わせることで、<br>
+                        体内の「気」の流れを整え、本来持っている自然治癒力を高めていきます。
+                    </p>
+                    
+                    <p class="section-text">
+                        難しい技術は必要ありません。<br>
+                        どなたでも、今この瞬間から始められます。
+                    </p>
+                </div>
+            </section>
+
+            <!-- レッスン -->
+            <section id="lesson" class="content-section">
+                <div class="top-image">
+                    <span class="top-image-text">レッスンについて</span>
+                </div>
+                <div class="description">
+                    <h2 class="section-title">あなたに寄り添うレッスン</h2>
+                    <p class="section-text">
+                        一人ひとりの状態や目的に合わせて、丁寧にレッスンを行います。<br>
+                        初めての方でも安心してご参加いただけます。
+                    </p>
+                    
+                    <h3 class="section-subtitle">レッスン内容</h3>
+                    <ul class="lesson-list">
+                        <li>基本的な呼吸法の習得</li>
+                        <li>気功の基礎動作</li>
+                        <li>日常に活かせる呼吸のコツ</li>
+                        <li>心身のバランスを整える実践</li>
+                        <li>個別のお悩みに合わせた指導</li>
+                    </ul>
+                    
+                    <h3 class="section-subtitle">レッスン形式</h3>
+                    <p class="section-text">
+                        プライベートレッスン、少人数制グループレッスン、<br>
+                        オンラインレッスンなど、ご希望に応じて選択いただけます。
+                    </p>
+                    
+                    <p class="section-text">
+                        レッスンの詳細や料金については、お気軽にお問い合わせください。
+                    </p>
+                </div>
+            </section>
+
+            <!-- コンタクト -->
+            <section id="contact" class="content-section">
+                <div class="top-image">
+                    <span class="top-image-text">お問い合わせ</span>
+                </div>
+                <div class="description">
+                    <h2 class="section-title">お気軽にご連絡ください</h2>
+                    <p class="section-text">
+                        レッスンに関するご質問、ご相談など、<br>
+                        どのようなことでもお気軽にお問い合わせください。
+                    </p>
+                    
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-label">メール</div>
+                            <div>info@hoshinootayori.com</div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-label">Instagram</div>
+                            <div>@hoshinootayori</div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-label">受付時間</div>
+                            <div>平日 10:00 - 18:00</div>
+                        </div>
+                    </div>
+                    
+                    <p class="section-text" style="margin-top: 30px;">
+                        2営業日以内にご返信いたします。<br>
+                        お待ちしております。
+                    </p>
+                </div>
+            </section>
+        </main>
+
+        <!-- サイドメニュー -->
+        <nav class="side-menu">
+            <div class="menu-item active" data-section="home">ホーム</div>
+            <div class="menu-item" data-section="breathing">呼吸・気功について</div>
+            <div class="menu-item" data-section="lesson">レッスン</div>
+            <div class="menu-item" data-section="contact">コンタクト</div>
+            <div class="instagram-icon">
+                <a href="https://instagram.com" target="_blank" title="Instagram">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <script>
+        // メニュー切り替え機能
+        const menuItems = document.querySelectorAll('.menu-item');
+        const sections = document.querySelectorAll('.content-section');
+
+        menuItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const targetSection = item.getAttribute('data-section');
+                
+                // アクティブ状態の切り替え
+                menuItems.forEach(menu => menu.classList.remove('active'));
+                item.classList.add('active');
+                
+                // セクション表示の切り替え
+                sections.forEach(section => section.classList.remove('active'));
+                document.getElementById(targetSection).classList.add('active');
+                
+                // ページトップにスクロール
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
