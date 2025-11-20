@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>プシュケー - 気功施術・呼吸法レッスン</title>
+    <title>プシュケー - 氣功施術・呼吸法レッスン</title>
     <style>
         * {
             margin: 0;
@@ -18,11 +18,13 @@
             line-height: 1.8;
         }
 
+        /* レイアウト */
         .container {
             display: flex;
             min-height: 100vh;
         }
 
+        /* メインコンテンツエリア */
         .main-content {
             flex: 1;
             padding: 60px 80px;
@@ -30,17 +32,19 @@
             margin: 0 auto;
         }
 
-        .side-menu {
-            position: fixed;
-            right: 0;
-            width: 200px;
-            height: 100vh;
-            background-color: #fefefe;
-            padding: 60px 30px;
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
+        /* 固定メニュー */
+.side-menu {
+    position: fixed;
+    right: 0;
+    top: 0;  /* ← この行全体を削除 */
+    width: 200px;
+    height: 100vh;
+    background-color: #fefefe;
+    padding: 60px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
 
         .menu-item {
             cursor: pointer;
@@ -85,43 +89,49 @@
             stroke-linecap: round;
             stroke-linejoin: round;
         }
+        
+        /* 背景色のボックス */
+.highlight-box {
+    background-color: #f9f6f4;
+    padding: 25px 30px;
+    border-radius: 4px;
+    margin: 25px 0;
+    border-left: 4px solid #b8926d;
+}
 
-        .highlight-box {
-            background-color: #f9f6f4;
-            padding: 25px 30px;
-            border-radius: 4px;
-            margin: 25px 0;
-            border-left: 4px solid #b8926d;
-        }
+/* 枠線のボックス */
+.border-box {
+    border: 1px solid #e8e3df;
+    padding: 25px 30px;
+    border-radius: 4px;
+    margin: 25px 0;
+}
 
-        .border-box {
-            border: 1px solid #e8e3df;
-            padding: 25px 30px;
-            border-radius: 4px;
-            margin: 25px 0;
-        }
+/* 大きめの文字 */
+.large-text {
+    font-size: 18px;
+    line-height: 2.2;
+    color: #333;
+    font-weight: 500;
+}
 
-        .large-text {
-            font-size: 18px;
-            line-height: 2.2;
-            color: #333;
-            font-weight: 500;
-        }
+/* 色付きの文字 */
+.accent-text {
+    color: #b8926d;
+    font-weight: 500;
+}
 
-        .accent-text {
-            color: #b8926d;
-            font-weight: 500;
-        }
+/* 小見出し */
+.small-heading {
+    font-size: 18px;
+    color: #8b7b6d;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+}
 
-        .small-heading {
-            font-size: 18px;
-            color: #8b7b6d;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            font-weight: 600;
-            letter-spacing: 0.08em;
-        }
-
+        /* コンテンツセクション */
         .content-section {
             display: none;
             animation: fadeIn 0.5s ease;
@@ -142,19 +152,21 @@
             }
         }
 
+        /* トップ画像 */
         .top-image {
-            width: 100%;
-            height: 400px;
-            background-color: #f5f1ed;
-            margin-bottom: 50px;
-            border-radius: 2px;
-            position: relative;
-            overflow: hidden;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
+    width: 100%;
+    height: 400px;
+    background-color: #f5f1ed;
+    margin-bottom: 50px;
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;        /* これを追加 */
+    background-position: center;   /* これを追加 */
+    background-repeat: no-repeat;  /* これを追加 */
+}
 
+        /* 説明文エリア */
         .description {
             max-width: 650px;
         }
@@ -222,393 +234,403 @@
             letter-spacing: 0.1em;
         }
 
-        .mobile-menu-button {
-            display: none;
-        }
+        /* ハンバーガーメニューボタン（PC では非表示） */
+.mobile-menu-button {
+    display: none;
+}
 
-        .menu-overlay {
-            display: none;
-        }
+.menu-overlay {
+    display: none;
+}
 
-        @media (max-width: 768px) {
-            body {
-                padding-bottom: 0;
-            }
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    body {
+        padding-bottom: 0; /* 修正 */
+    }
 
-            .container {
-                flex-direction: column;
-            }
+    .container {
+        flex-direction: column;
+    }
 
-            .main-content {
-                padding: 30px 20px;
-                padding-top: 80px;
-                padding-bottom: 40px;
-                margin-right: 0;
-                width: 100%;
-                margin-left: 0;
-            }
+    .main-content {
+        padding: 30px 20px;
+        padding-top: 80px; /* メニューボタン分の余白 */
+        padding-bottom: 40px;
+        margin-right: 0;
+        width: 100%;
+        margin-left: 0;
+    }
 
-            .mobile-menu-button {
-                display: block;
-                position: fixed;
-                top: 20px;
-                right: 20px;
-                width: 50px;
-                height: 50px;
-                background-color: #fefefe;
-                border: 2px solid #e8e3df;
-                border-radius: 8px;
-                z-index: 2000;
-                cursor: pointer;
-                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            }
+    /* ハンバーガーメニューボタン */
+    .mobile-menu-button {
+        display: block;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        background-color: #fefefe;
+        border: 2px solid #e8e3df;
+        border-radius: 8px;
+        z-index: 2000;
+        cursor: pointer;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
 
-            .mobile-menu-button span {
-                display: block;
-                width: 25px;
-                height: 2px;
-                background-color: #6b6b6b;
-                margin: 6px auto;
-                transition: 0.3s;
-            }
+    .mobile-menu-button span {
+        display: block;
+        width: 25px;
+        height: 2px;
+        background-color: #6b6b6b;
+        margin: 6px auto;
+        transition: 0.3s;
+    }
 
-            .mobile-menu-button.active span:nth-child(1) {
-                transform: rotate(-45deg) translate(-5px, 6px);
-            }
+    .mobile-menu-button.active span:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
 
-            .mobile-menu-button.active span:nth-child(2) {
-                opacity: 0;
-            }
+    .mobile-menu-button.active span:nth-child(2) {
+        opacity: 0;
+    }
 
-            .mobile-menu-button.active span:nth-child(3) {
-                transform: rotate(45deg) translate(-5px, -6px);
-            }
+    .mobile-menu-button.active span:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
 
-            .menu-overlay {
-                display: none;
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-color: rgba(0, 0, 0, 0.5);
-                z-index: 1500;
-            }
+    /* メニューオーバーレイ */
+    .menu-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1500;
+    }
 
-            .menu-overlay.active {
-                display: block;
-            }
+    .menu-overlay.active {
+        display: block;
+    }
 
-            .side-menu {
-                position: fixed !important;
-                top: 0 !important;
-                right: -100% !important;
-                bottom: auto !important;
-                left: auto !important;
-                width: 280px !important;
-                height: 100vh !important;
-                flex-direction: column !important;
-                justify-content: flex-start !important;
-                align-items: stretch !important;
-                padding: 80px 30px 30px !important;
-                gap: 25px !important;
-                border-left: 2px solid #e8e3df !important;
-                border-top: none !important;
-                z-index: 1800 !important;
-                background-color: #fefefe !important;
-                box-shadow: -2px 0 10px rgba(0,0,0,0.1) !important;
-                transition: right 0.3s ease !important;
-            }
+    /* サイドメニュー（モバイル） */
+    .side-menu {
+        position: fixed !important;
+        top: 0 !important;
+        right: -100% !important;
+        bottom: auto !important;
+        left: auto !important;
+        width: 280px !important;
+        height: 100vh !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+        align-items: stretch !important;
+        padding: 80px 30px 30px !important;
+        gap: 25px !important;
+        border-left: 2px solid #e8e3df !important;
+        border-top: none !important;
+        z-index: 1800 !important;
+        background-color: #fefefe !important;
+        box-shadow: -2px 0 10px rgba(0,0,0,0.1) !important;
+        transition: right 0.3s ease !important;
+    }
 
-            .side-menu.active {
-                right: 0 !important;
-            }
+    .side-menu.active {
+        right: 0 !important;
+    }
 
-            .menu-item {
-                font-size: 15px;
-                padding: 15px 0;
-                flex: none;
-                white-space: normal;
-                line-height: 1.6;
-                text-align: center;
-                border-bottom: 1px solid #f0f0f0;
-            }
+    .menu-item {
+        font-size: 15px;
+        padding: 15px 0;
+        flex: none;
+        white-space: normal;
+        line-height: 1.6;
+        text-align: center;
+        border-bottom: 1px solid #f0f0f0;
+    }
 
-            .instagram-icon {
-                margin-top: auto;
-                padding-top: 30px;
-                border-top: 1px solid #e8e3df;
-                border-left: none;
-                padding-left: 0;
-                flex: none;
-            }
+    .instagram-icon {
+        margin-top: auto;
+        padding-top: 30px;
+        border-top: 1px solid #e8e3df;
+        border-left: none;
+        padding-left: 0;
+        flex: none;
+    }
 
-            .instagram-icon svg {
-                width: 24px;
-                height: 24px;
-            }
+    .instagram-icon svg {
+        width: 24px;
+        height: 24px;
+    }
 
-            .top-image {
-                height: 200px;
-                margin-bottom: 30px;
-            }
+    .top-image {
+        height: 200px;
+        margin-bottom: 30px;
+    }
 
-            .section-title {
-                font-size: 22px;
-                margin-bottom: 20px;
-            }
+    .section-title {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
 
-            .section-subtitle {
-                font-size: 18px;
-                margin-top: 30px;
-            }
+    .section-subtitle {
+        font-size: 18px;
+        margin-top: 30px;
+    }
 
-            .section-text {
-                font-size: 14px;
-                line-height: 1.9;
-            }
+    .section-text {
+        font-size: 14px;
+        line-height: 1.9;
+    }
 
-            .large-text {
-                font-size: 16px;
-                display: block;
-                margin-bottom: 15px;
-            }
+    .large-text {
+        font-size: 16px;
+        display: block; /* これを追加 */
+        margin-bottom: 15px; /* これを追加 */
+    }
 
-            .highlight-box, .border-box {
-                padding: 20px;
-                margin: 20px 0;
-            }
-        }
+    .highlight-box, .border-box {
+        padding: 20px;
+        margin: 20px 0;
+    }
+}
     </style>
 </head>
 <body>
+    <!-- モバイルメニューボタン -->
     <button class="mobile-menu-button" id="mobileMenuButton">
         <span></span>
         <span></span>
         <span></span>
     </button>
     
+    <!-- メニューオーバーレイ -->
     <div class="menu-overlay" id="menuOverlay"></div>
     
     <div class="container">
+        <!-- メインコンテンツ -->
         <main class="main-content">
+            <!-- ホーム -->
             <section id="home" class="content-section active">
                 <div class="top-image" style="background-image: url('images/top1.jpg');"></div>
                 <div class="description">
-                    <h1 class="section-title">呼吸とともに、気は生まれ巡る。</h1>
+                    <h1 class="section-title">呼吸とともに、氣は生まれ巡る。</h1>
                     <p class="section-text">
 生まれたときから、呼吸とともに生きているわたしたち。<br>
-私たちは自らの呼吸によって、気を生み出し蓄える力を持っています。<br>
-「気」とは生命エネルギーで、あらゆる生命に絶えず流れています。<br>
+私たちは自らの呼吸によって、氣を生み出し蓄える力を持っています。<br>
+「氣」とは生命エネルギーで、あらゆる生命に絶えず流れています。<br>
 世界は全て見えないエネルギーで繋がり循環していて、わたしたちは地球上のどんな場所にいても自然の一部です。<br>
-そして、わたしたちの体内に生命エネルギーが流れ続けている限り、自らの心と体を癒し元気にしていく力が備わっているのだと思います。<br>
-気功 ・呼吸法を通して、出会った方が持つ本来のエネルギーを一緒に育て、人生が楽しく生き生きとなるようなサポートができればと思います。<br>
-気の世界は、とても奥深くて楽しいです。<br>
-この教室を通して、気功や呼吸法を自分自身の日々の可能性を切り開くために、生き生きとご活用していただければ幸いです。<br><br>
+そして、わたしたちの体内に生命エネルギーが流れ続けている限り、自らの心と体を癒し元氣にしていく力が備わっているのだと思います。<br>
+氣功 ・呼吸法を通して、出会った方が持つ本来のエネルギーを一緒に育て、人生が楽しく生き生きとなるようなサポートができればと思います。<br>
+氣の世界は、とても奥深くて楽しいです。<br>
+この教室を通して、氣功や呼吸法を自分自身の日々の可能性を切り開くために、生き生きとご活用していただければ幸いです。<br><br>
 
 <h3 class="section-subtitle">モリタモモコ / momoko morita</h3>
-気塾認定講師<br><br>
+氣塾認定講師<br><br>
                         
 小さな頃から、複雑な感情と生きづらさを抱えたまま大人になる。<br>
 言葉の代わりに、写真を撮ること、絵を描くことがコミュニケーションでもあった。<br>
 住居も兼ねて八ヶ岳の頂上の山小屋で働く。その他に北海道の牧場、台湾のお茶や料理のお店、絵やデザインを教える造形教室で働き、
-制作活動をする傍らで、気に興味を持ちはじめて、マスターヨーガと武当派太極内丹法の気功 ・呼吸法の教え伝える木村丈彦氏に教わる。<br>
+制作活動をする傍らで、氣に興味を持ちはじめて、マスターヨーガと武当派太極内丹法の氣功 ・呼吸法の教え伝える木村丈彦氏に教わる。<br>
 数年間学び続けて、修行によって沢山の恩恵を受けてきたことの多さに気づく。<br><br>
 また、私は作家としても制作をしている。<br>
-自らのアーティスト・ステートメントにもある「いのちの可能性」は、気功や呼吸法も根っこは同じだと思い、ひとりで腑に落ちて全てが繋がる。<br>
+自らのアートティスト・ステーメントにもある「いのちの可能性」は、氣功や呼吸法も根っこは同じだと思い、ひとりで腑に落ちて全てが繋がる。<br>
 私ができたことを、少しずつ出会う方の役に立てるように行法を伝えていきたい。<br>
-私がおばあちゃんになる頃には、大きな木のように、ただいるだけで、みんな自然と元気になるような人になりたい。<br>
+私がおばあちゃんになるころには、大きな木のように、ただいるだけで、みんな自然と元氣になるような人になりたい。<br>
                     </p>
                 </div>
             </section>
 
+            <!-- 呼吸・気功について -->
             <section id="breathing" class="content-section">
                 <div class="top-image" style="background-image: url('images/top2.jpg');"></div>
                 <div class="description">
-                    <h2 class="section-title">「気」とは?</h2>
+                    <h2 class="section-title">「氣」とは？</h2>
                     <p class="section-text">
-                    気とは、あらゆるものに宿る生命エネルギーです。<br>
+                    氣とは、あらゆるものに宿る生命エネルギーです。<br>
                     多い方から少ない方へ、または上から下に流れる性質を持っています。<br>
-                    呼吸法により気を育てることで、心身ともに元気になります。<br>
+                    呼吸法により氣を育てることで、心身ともに元気になります。<br>
                     </p>
                     
                     <h3 class="section-subtitle">気脈について</h3>
                     <p class="section-text">
-                        気の流れる通り道のことを指します。<br>
+                        氣の流れる通り道のことを指します。<br>
                         ここで扱う呼吸法「古式マスターヨーガ」と「内丹法」の技術で、<br>
-                        気の圧力を上げて、内圧により気脈を広げて沢山の気を扱うことを可能にしていきます。<br>
+                        氣の圧力を上げて、内圧により気脈を広げて沢山の氣を扱うことを可能にしていきます。<br>
                     </p>
                     
                     <h3 class="section-subtitle">呼吸法について</h3>
                     <p class="section-text">
-基本となる呼吸法は、気を発生させる「練気法」と気をコントロールする「調息法」の2つになります。<br><br>
-                    </p>
+基本となる呼吸法は、氣を発生させる「練氣法」と氣をコントロールする「調息法」の２つになります。<br><br>
 
-                    <p class="large-text">練気法(れんきほう)</p>                      
-                    <p class="section-text">
-7つの各チャクラを回し「気」を発生させる呼吸法。<br>
+<p class="large-text">練氣法(れんきほう）</p>                      
+
+７つの各チャクラを回し「氣」を発生させる呼吸法。<br>
 チャクラの部位によっても、呼吸の仕方が変わり、目の動きを使うものもあります。<br>
-代表的な呼吸法は、まず目一杯、肺と胃に空気を吸い込み、胃の上の腹筋を閉めて、横隔膜を持ち上げ3秒〜5秒息を止めます。<br>
+代表的な呼吸法は、まず目一杯、肺と胃に空気を吸い込み、胃の上の腹筋を閉めて、横隔膜を持ち上げ３秒〜５秒息を止めます。<br>
 その後、半眼になりながら、ゆっくりと息を抜きます。<br>
-呼吸法の中で息を止める行為を止息(しそく)(クンバカ)と言います。<br><br>
-                    </p>
+呼吸法の中で息を止める行為を止息(しそく)（クンバカ）と言います。<br><br>
                         
-                    <p class="large-text">調息法(ちょうそくほう)</p>
-                    <p class="section-text">     
-練気法により発生させた「気」を頭部に上げたり、下半身に下ろしたりなど「気」を動かし、気の波を抑えたりする気の運用法の一つです。<br>
-発生直後の「気」は、荒く波を持っています。<br>
-その気は「やる気」の元になりますが、同時に荒さを内包しています。<br>
-行においては調息法により気を深く沈め、心を平たくする必要があります。<br>
-調息法にも様々な呼吸法がありますが、練気法とは異なり、止息を使用しません。<br><br>
+<p class="large-text">調息法(ちょうそくほう)</p>     
+練氣法により発生させた「氣」を頭部に上げたり、下半身に下ろしたりなど「氣」を動かし、氣の波を抑えたりする氣の運用法の一つです。<br>
+発生直後の「氣」は、荒く波を持っています。<br>
+その氣は「やる気」の元になりますが、同時に荒さを内包しています。<br>
+行においては調息法により氣を深く沈め、心を平たくする必要があります。<br>
+調息法にも様々な呼吸法がありますが、練氣法とは異なり、止息を使用しません。<br><br>
                     </p>
                     
                     <h3 class="section-subtitle">チャクラについて</h3>
                     <p class="section-text">
-                        チャクラとは体内に7つある気のエネルギーセンターです。<br>
-                        気のもととなる精、精気を収集、圧縮や活性化することによって<br>
-                        気を発生させる機能を持ちます。<br><br>
+                        チャクラとは体内に7つある氣のエネルギーセンターです。<br>
+                        氣のもととなる精、精氣を収集、圧縮や活性化することによって<br>
+                        氣を発生させる機能を持ちます。<br><br>
                         各チャクラは人体の各機能と精神に直結しており、それぞれ役割があります。<br>
                         それを呼吸法により回すことで、特徴や役割が目覚めて「力」が発揮されます。<br><br>
                     </p>
                     
                     <h3 class="section-subtitle">各チャクラについて</h3>
-
-                    <p class="large-text">1番チャクラ / 尾骨</p>
                     <p class="section-text">
+<p class="large-text">１番チャクラ / 尾骨</p>
+
 一番基本的で、人が生きる為の最低限の基部、地より不活性の陰の気を収集する、誰もが作動しているチャクラです。<br><br>
-                    </p>
                         
-                    <p class="large-text">2番チャクラ / おへその下約7センチ(丹田)</p>
-                    <p class="section-text">
-根性、曲げ無い心、あげ無い心など強い意志を表します。<br>
+<p class="large-text">２番チャクラ / おへその下約7センチ（丹田）</p>
+                        
+根性、曲げ無い心、めげ無い心など強い意思を表します。<br>
 健康においては内臓の働きを支えて、精神を強固にたもつチャクラです。<br><br>
-                    </p>
 
-                    <p class="large-text">3番チャクラ / へその上約7センチ(太陽神経叢)</p>
-                    <p class="section-text">
+<p class="large-text">３番チャクラ / へその上約7センチ（太陽神経叢）</p>
+
 このチャクラから引き出される効能は、自己の精神そのものです。<br>
 その精神の中でも最も表面的な個性を司ります。<br>
-3番チャクラを作動させる事により、真逆の感情の波を発生させて、感情を中和させる事を可能にさせます。<br><br>
-                    </p>
+３番チャクラを作動させる事により、真逆の感情の波を発生させて、感情を中和させる事を可能にさせます。<br><br>
 
-                    <p class="large-text">4番チャクラ / 胸の中心(鳩尾)</p>
-                    <p class="section-text">
-4番チャクラは魂の座とも呼ばれていて、魂はそこに座っており、人の思いの中心地として、そこから思いは発せられます。<br>
+<p class="large-text">４番チャクラ / 胸の中心（鳩尾）</p>
+
+４番チャクラは魂の座とも呼ばれていて、魂はそこに座っており、人の思いの中心地として、そこから思いは発せられます。<br>
 更にはその中に在る今世での設計図にアクセスする事によって、自身の宿命を垣間見る事を可能にします。<br>
-センサーとしての機能を引き出す事も出来ますので、その場所、その人がどの様な状態にあるのか?<br>
+センサーとしての機能を引き出す事も出来ますので、その場所、その人がどの様な状態にあるのか？<br>
 物事の「虚実」を見切る事も、このチャクラの効能にあります。<br><br>
 
 人の思いの起点、人の人生の起点として、その行動を左右する、大きな意思決定はここを中心に全て決められます。<br><br>
-                    </p>
 
-                    <p class="large-text">5番チャクラ / 喉元</p>
-                    <p class="section-text">
-第5のチャクラは、咽頭から喉元にかけての甲状腺の対応部分に位置しています。<br>
-3番チャクラが表面的、反応的な精神を司るのに対し、5番は更に長期間の精神と反応、すなわち生き方を司っています。<br>
-生き方ですから人の転機には4番の魂と共に連動し、新たな生き方を導き出す能力を秘めています。<br><br>
-                    </p>
+<p class="large-text">５番チャクラ / 喉元</p>
 
-                    <p class="large-text">6番チャクラ  / 額</p>
-                    <p class="section-text">
-第3の目と呼ばれるチャクラです。人の全六感に通じています。この世の物理法則を超えて機能する力を持っている為、そのエネルギー量も5番までと比較しても桁が変わります。<br>
+第５のチャクラは、咽頭から喉元にかけての甲状腺の対応部分に位置しています。<br>
+３番チャクラが表面的、反応的な精神を司るのに対し、５番は更に長期間の精神と反応、すなわち生き方を司っています。<br>
+生き方ですから人の転機には４番の魂と共に連動し、新たな生き方を導き出す能力を秘めています。<br><br>
+
+<p class="large-text">６番チャクラ  / 額</p>
+
+第３の目と呼ばれるチャクラです。人の全六感に通じています。この世の物理法則を超えて機能する力を持っている為、そのエネルギー量も５番までと比較しても桁が変わります。<br>
 下位の全チャクラの下支えによって安定した稼働が可能です。<br>
-このチャクラの覚醒により五感(視覚、聴覚、嗅覚、味覚、触覚)は必然的に研ぎ澄まされます。<br>
+このチャクラの覚醒により五感（視覚、聴覚、嗅覚、味覚、触覚）は必然的に研ぎ澄まされます。<br>
 それに合わせて、第六感が確信的に発達します。<br>
-物理法則を超える機能は、4番の魂に内包されている過去生や今世での設計図、他の魂との約束等にもアクセスする事が可能となります。<br>
+物理法則を超える機能は、４番の魂に内包されている過去生や今世での設計図、他の魂との約束等にもアクセスする事が可能となります。<br>
 ただし、これらはその人の転機をきっかけとする場合が多く、通常においては過去生のバグ、すなわち断片に触れる場合の方が多く見受けられます。<br>
-6番は頭部に有って、大量の気力を発生する為、意識集中により、必然的に意識レベルは低下します。<br>
-我々はこの力を利用することにより変性意識に陥り、本格的な瞑想を可能にします。<br>
+６番は頭部に有って、大量の気力を発生する為、意識集中により、必然的に意識レベルは降下します。<br>
+我々はこの力を利用することにより変性意識に降り、本格的な瞑想を可能にします。<br>
 上記の効能は副産物的に発生します。<br>
-ただし6番の情報だけでは映像、音声の情報のみとなる為に、それを見る意味までは、理解する事が出来ないようになっているのです。<br><br>
-                    </p>
+ただし６番の情報だけでは映像、音声の情報のみとなる為に、それを見る意味までは、理解する事が出来ないようになっているのです。<br><br>
 
-                    <p class="large-text">7番チャクラ/ 頭頂部より3センチ後ろ(百会)</p>
-                    <p class="section-text">
-7番チャクラは王冠のチャクラとも呼ばれます。<br>
-これも、よく頭頂部との表記が多いのですが、実際には頭頂部より約3センチ程後ろに位置しています。<br>
-体内に置ける最上位のチャクラで6番チャクラよりも更に「桁が上がり」ます。<br>
-その為覚醒させれば最も霊性が高く、この世とあの世のあらゆる理!ことわりを理解する為に必要な機能を持つチャクラです。<br>
+<p class="large-text">７番チャクラ/ 頭頂部より3センチ後ろ（百会）</p>
+
+７番チャクラは王冠のチャクラとも呼ばれます。<br>
+これも、よく頭頂部との表記が多いのですが、実際には頭頂部より約３センチ程後ろに位置しています。<br>
+体内に置ける最上位のチャクラで６番チャクラよりも更に「桁が上がり」ます。<br>
+その為覚醒させれば最も霊性が高く、この世とあの世のあらゆる理＝ことわりを理解する為に必要な機能を持つチャクラです。<br>
 この機能は禅定を繰り返す事により活性化します。<br>
-また、修行の過程においては6番の次に開発するのですが、本来7番チャクラは6番チャクラと密接に連携するように出来ており、7番チャクラが機能することにより6番チャクラで見る過去生や言わゆるビジョンに対しての意味合いを知ることが可能となるのです。<br>
-頭部において6番チャクラ以上の気力を使用することになるので、頭部における気と気脈の内圧が、かなり上昇することになります。<br>
-その為に7番の蓋を開けての循環による内圧コントロールが大変重要になります。<br>
+また、修行の過程においては６番の次に開発するのですが、本来７番チャクラは６番チャクラと密接に連携するように出来ており、７番チャクラが機能することにより６番チャクラで見る過去生や言わゆるビジョンに対しての意味合いを知ることが可能となるのです。<br>
+頭部において６番チャクラ以上の気力を使用することになるので、頭部における氣と気脈の内圧が、かなり上昇することになります。<br>
+その為に７番の蓋を開けての循環による内圧コントロールが大変重要になります。<br>
 内圧を放置すると頭痛や精神障害を招く場合もあります。<br>
-その場合、西洋医学での療法では改善されない場合が多々ありますので、7番チャクラの開発に関してはこの道の技術に習熟し、教授が可能な段階までを正しく修めた師による指導を受けて頂くことをお勧めします。<br><br>
+その場合、西洋医学での療法では改善されない場合が多々ありますので、７番チャクラの開発に関してはこの道の技術に習熟し、教授が可能な段階までを正しく修めた師による指導を受けて頂くことをお勧めします。<br><br>
                     </p>
                 </div>
             </section>
 
+            <!-- レッスン -->
             <section id="lesson" class="content-section">
                 <div class="top-image" style="background-image: url('images/top3.jpg');"></div>
                 <div class="description">
                     <h2 class="section-title">レッスンについて</h2>
-                    
-                    <h3 class="section-subtitle">気功施術(遠隔セッション)</h3>
                     <p class="section-text">
-オンライン通話を通じて、こちらから遠隔で気を流させていただきます。<br>
-気を通す事で、気力を回復させて補充します。<br>
-「気」を体験したい方にも、心身ともにリラックスしたい人にもおすすめです。<br><br>
+<h3 class="section-subtitle">氣功施術（遠隔セッション）</h3>
+
+オンライン通話を通じて、こちらから遠隔で氣を流させていただきます。<br>
+氣を通す事で、氣力を回復させて補充します。<br>
+「氣」を体験したい方にも、心身ともにリラックスしたい人にもおすすめです。<br><br>
 
 施術時間　30分　3000円<br>
-                    </p>
 
-                    <h3 class="section-subtitle">呼吸法レッスン(遠隔レッスン・対面レッスン)</h3>
-                    <p class="section-text">
+<h3 class="section-subtitle">呼吸法レッスン（遠隔レッスン・対面レッスン）</h3>
+
 音声のみでレッスンできます。<br>
 日々のライフスタイルに合わせて続けることができます。<br>
 対面レッスンが希望の場合は、浅草近辺で場所を借りて進めていきます。<br>
 レッスンを進んでいく中で、質問や疑問などあれば、いつでもご連絡ください。<br>
-※初めに気の詰まりをとってから、レッスンを開始します。<br><br>
+※初めに氣の詰まりをとってから、レッスンを開始します。<br>
 
-トンレンにより精神融合を行い、陽の気を対象者の内部に飛ばし、気の内圧により、気脈の詰まりを取り、チャクラを加工する手法を用いて行います。<br>
-気脈を広げて、扱える気量・気力を大きくしていきます。<br>
+トンレンにより精神融合を行い、陽の氣を対象者の内部に飛ばし、氣の内圧により、気脈の詰まりを取り、チャクラを加工する手法を用いて行います。<br>
+気脈を広げて、扱える氣量・氣力を大きくしていきます。<br>
 「古式マスターヨーガ」と「武当派太極内丹法の呼吸法」を使用します。<br><br>
 
-初回お試し　　50分   無料<br>
-2回目以降　1レッスン　50分　 5000円( 週1回〜月2回。)<br>
-                    </p>
+初回お試し　		50分   無料<br>
+２回目以降　１レッスン　50分　 5000円（ 週1回〜月2回。）<br>
 
-                    <h3 class="section-subtitle">レッスンの大まかな流れと説明</h3>
+<h3 class="section-subtitle">レッスンの大まかな流れと説明</h3>
 
-                    <p class="large-text">一段目</p>
-                    <p class="section-text">
-「気」を発生させ、操れる為の基礎条件を整えます。<br>
-古式マスターヨーガの技法により、気脈の詰まりを取り、気の流れを作り、1番から7番までの気の発生機であるチャクラを使用出来るようにします。<br>
-呼吸法と調息法を体得して頂きます。これにより、しっかりとした陰の気を使用できるようにします。<br><br>
+<p class="large-text">一段目</p> 
 
-1番から5番のチャクラのレッスンは、5〜7回<br>
-彩誉という儀式を通る6番から7番のチャクラのレッスンは、9〜13回<br><br>
-                    </p>
+「氣」を発生させ、操れる為の基礎条件を整えます。<br>
+古式マスターヨーガの技法により、気脈の詰まりを取り、氣の流れを作り、２番から７番までの氣の発生機であるチャクラを使用出来るようにします。<br>
+呼吸法と調息法を体得して頂きます。これにより、しっかりとした陰の氣を使用できるようにします。<br><br>
 
-                    <p class="large-text">三段目</p>
-                    <p class="section-text">
-初期の陽の気を煮詰め、更に気質を上げます。<br>
-引き続き内丹法の技法で気を練る段階です。<br>
-練った気を再び丹田に納める温養を繰り返し、陽神の元を作っていきます。<br>
-後半にもなると、かなりの気の浸透力を持てるようになります。<br><br>
+２番から５番のチャクラのレッスンは、５〜７回<br>
+彩華という儀式を通る６番から７番のチャクラのレッスンは、９〜１４回<br><br>
 
-1番から5番のチャクラのレッスンは、5〜7回<br>
-彩誉という儀式を通る6番から7番のチャクラのレッスンは、9〜13回<br><br>
-                    </p>
+<p class="large-text">二段目</p>
 
-                    <p class="large-text">四段目</p>
-                    <p class="section-text">
+一段目で養った“陰の氣”に“火”を灯し、“陽の氣”を生み出す段階へ進みます。<br>
+この段階では、武当派太極内丹法を用いて、陽の氣に身体と心を慣らし、内側に種火（たねび）をつくります。<br>
+同時に、氣の通り道である気脈を鍛え、各チャクラに火を入れて活性化させながら、心身をより強く整えていきます。<br><br>
+
+２番から５番のチャクラのレッスンは、５〜７回<br>
+彩華という儀式を通る６番から７番のチャクラのレッスンは、９〜１４回<br><br>
+
+<p class="large-text">三段目</p>
+
+初期の陽の氣を煮詰め、更に気質を上げます。<br>
+引き続き内丹法の技法で氣を練る段階です。<br>
+練った氣を再び丹田に納める温養を繰り返し、陽神の元を作っていきます。<br>
+後半にもなると、かなりの氣の浸透力を持てるようになります。<br><br>
+
+２番から５番のチャクラのレッスンは、５〜７回<br>
+彩華という儀式を通る６番から７番のチャクラのレッスンは、９〜１４回<br><br>
+
+
+<p class="large-text">四段目</p>
+
 再び古式マスターヨーガの行法に戻し、陰神を鍛えていきます。<br>
-これにより万物の実際の気質、陰陽の気の含み具合を理解していきます。<br>
+これにより万物の実際の気質、陰陽の氣の含み具合を理解していきます。<br>
 また高度な念法の技法を体得することにより、チャクラの概念からの離脱を目指します。<br><br>
 
-1番から5番のチャクラのレッスンは、5〜7回<br>
-彩誉という儀式を通る6番から7番のチャクラのレッスンは、9〜13回<br><br>
-                    </p>
+２番から５番のチャクラのレッスンは、５〜７回<br>
+彩華という儀式を通る６番から７番のチャクラのレッスンは、９〜１４回<br><br>
 
-                    <h3 class="section-subtitle">気とアートの出張イベント</h3>
-                    <p class="section-text">
-アートを通して、気を体感する出張イベントをします。<br>
-創造的な体験を通して、気の世界も一緒に学んでいただきます。<br>
+
+<h3 class="section-subtitle">氣とアートの出張イベント</h3>
+
+アートを通して、氣を体感する出張イベントをします。<br>
+創造的な体験を通して、氣の世界も一緒に学んでいただきます。<br>
+                        
                     </p>
                 </div>
             </section>
 
+            <!-- コンタクト -->
             <section id="contact" class="content-section">
                 <div class="top-image" style="background-image: url('images/top4.jpg');"></div>
                 <div class="description">
@@ -641,6 +663,7 @@
             </section>
         </main>
 
+        <!-- サイドメニュー -->
         <nav class="side-menu">
             <div class="menu-item active" data-section="home">ホーム</div>
             <div class="menu-item" data-section="breathing">呼吸・気功について</div>
@@ -659,6 +682,7 @@
     </div>
 
     <script>
+        // メニュー切り替え機能
         const menuItems = document.querySelectorAll('.menu-item');
         const sections = document.querySelectorAll('.content-section');
 
@@ -666,16 +690,22 @@
             item.addEventListener('click', () => {
                 const targetSection = item.getAttribute('data-section');
                 
+                // アクティブ状態の切り替え
                 menuItems.forEach(menu => menu.classList.remove('active'));
                 item.classList.add('active');
                 
+                // セクション表示の切り替え
                 sections.forEach(section => section.classList.remove('active'));
                 document.getElementById(targetSection).classList.add('active');
                 
+                // ページトップにスクロール
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         });
+    </script>
 
+    <script>
+        // モバイルメニューの開閉
         const mobileMenuButton = document.getElementById('mobileMenuButton');
         const menuOverlay = document.getElementById('menuOverlay');
         const sideMenu = document.querySelector('.side-menu');
@@ -692,6 +722,7 @@
             sideMenu.classList.remove('active');
         });
 
+        // メニュー項目クリック時にメニューを閉じる
         document.querySelectorAll('.menu-item').forEach(item => {
             item.addEventListener('click', () => {
                 mobileMenuButton.classList.remove('active');
@@ -700,15 +731,6 @@
             });
         });
     </script>
+    
 </body>
-</html>、9〜13回<br><br>
-                    </p>
-
-                    <p class="large-text">二段目</p>
-                    <p class="section-text">
-一段目で養った"陰の気"に"火"を灯し、"陽の気"を生み出す段階へ進みます。<br>
-この段階では、武当派太極内丹法を用いて、陽の気に身体と心を慣らし、内側に種火(たねび)をつくります。<br>
-同時に、気の通り道である気脈を鍛え、各チャクラに火を入れて活性化させながら、心身をより強く整えていきます。<br><br>
-
-1番から5番のチャクラのレッスンは、5〜7回<br>
-彩誉という儀式を通る6番から7番のチャクラのレッスンは
+</html>
