@@ -235,51 +235,59 @@
         }
 
         /* レスポンシブ対応 */
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-            }
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
 
-            .main-content {
-                padding: 40px 30px;
-                padding-bottom: 120px;
-            }
+    .main-content {
+        padding: 40px 30px;
+        padding-bottom: 150px;  /* この数値を大きくする（元は120px） */
+        margin-right: 0;  /* これを追加 */
+    }
 
-            .side-menu {
-                position: fixed;
-                bottom: 0;
-                right: 0;
-                left: 0;
-                width: 100%;
-                height: auto;
-                flex-direction: row;
-                justify-content: space-around;
-                padding: 20px;
-                border-left: none;
-                border-top: 1px solid #e8e3df;
-            }
+    .side-menu {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 15px 10px;  /* paddingを少し小さく */
+        border-left: none;
+        border-top: 1px solid #e8e3df;
+        z-index: 1000;  /* これを追加 */
+        background-color: #fefefe;  /* これを追加 */
+    }
 
-            .instagram-icon {
-                margin-top: 0;
-                padding-top: 0;
-                border-top: none;
-                border-left: 1px solid #e8e3df;
-                padding-left: 20px;
-            }
+    .menu-item {
+        font-size: 13px;  /* フォントサイズを少し小さく */
+        padding: 5px 0;
+    }
 
-            .instagram-icon svg {
-                width: 18px;
-                height: 18px;
-            }
+    .instagram-icon {
+        margin-top: 0;
+        padding-top: 0;
+        border-top: none;
+        border-left: 1px solid #e8e3df;
+        padding-left: 15px;  /* 少し小さく */
+    }
 
-            .top-image {
-                height: 250px;
-            }
+    .instagram-icon svg {
+        width: 18px;
+        height: 18px;
+    }
 
-            .section-title {
-                font-size: 24px;
-            }
-        }
+    .top-image {
+        height: 250px;
+    }
+
+    .section-title {
+        font-size: 24px;
+    }
+}
     </style>
 </head>
 <body>
